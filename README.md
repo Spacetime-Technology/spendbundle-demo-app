@@ -6,13 +6,13 @@ This demo application generates an address for a puzzle which;
 - Requires a signatures to be spent
 - Makes a coin announcement
 
-Upon funding this address the application will create a spend bundle which spends a coin of this address and sends that spend bundle to the SpendBundle.com API.
+Upon funding this address the application will create a spend bundle which spends a coin of this address and sends that spend bundle to the [SpendBundle.com](https://www.spendbundle.com/) API.
 
-The SpendBundle.com API returns a modified spend bundle with fees attached.
+The [SpendBundle.com](https://www.spendbundle.com/) API returns a modified spend bundle with fees attached.
 
 ## Requirements
 
-- SpendBundle.com account
+- [SpendBundle.com](https://www.spendbundle.com/) account
 - testnet11 TXCH to find the address
 
 ## How to run
