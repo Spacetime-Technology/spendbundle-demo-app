@@ -1,13 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-
-interface LoginDto {
-  email: string;
-  password: string;
-}
-
-interface LoginResponseDto {
-  token: string;
-}
+import { config } from './config';
 
 interface CoinDto {
   parent_coin_info: string;
@@ -73,7 +65,7 @@ interface SpendsResponseDto {
 
 class SpendBundle {
   private client: AxiosInstance;
-  private token?: string;
+  private apiKey = config.spendBundle.credentials.apiKey;
 
   constructor() {
     this.client = axios.create({
@@ -83,25 +75,11 @@ class SpendBundle {
       },
     });
 
-    // Add authentication interceptor
-    this.client.interceptors.request.use(config => {
-      if (this.token) {
-        config.headers.Authorization = `Bearer ${this.token}`;
-      }
-      return config;
-    });
-  }
+    this.client.interceptors.request.use(requestConfig => {
+      requestConfig.headers['x-api-key'] = this.apiKey;
 
-  /**
-   * Login to the API and store the authentication token
-   */
-  async login(credentials: LoginDto): Promise<LoginResponseDto> {
-    const response = await this.client.post<LoginResponseDto>(
-      '/auth/login',
-      credentials,
-    );
-    this.token = response.data.token;
-    return response.data;
+      return requestConfig;
+    });
   }
 
   /**

@@ -13,8 +13,7 @@ export const config = {
   },
   spendBundle: {
     credentials: {
-      email: process.env.SPENDBUNDLE_EMAIL || '',
-      password: process.env.SPENDBUNDLE_PASSWORD || '',
+      apiKey: process.env.SPENDBUNDLE_API_KEY || '',
     },
   },
 };

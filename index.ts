@@ -70,8 +70,6 @@ const puzzleHash = toHex(spend.puzzle.treeHash());
       ],
     };
 
-    await spendBundleApi.login(config.spendBundle.credentials);
-
     const { spends: pendingSpends } = await spendBundleApi.getSpends(
       'testnet11',
       'pending',
